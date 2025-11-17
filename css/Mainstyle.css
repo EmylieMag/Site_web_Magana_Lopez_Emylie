@@ -1,0 +1,188 @@
+ /* Définition de constantes */
+ :root {
+     --gap: 10px;
+     --border-radius: 10px;
+     --scroolbar-with: 10px;
+ }
+
+ /* Remettre à zéro les marges de tous éléments pour contrecarrer les valeurs par défaut prédéfinies du fureteur */
+ * {
+     margin: 0px;
+     padding: 0px;
+     box-sizing: border-box;
+     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+ }
+
+ /* Classe pour la mise en page utilisant les "flexbox" */
+ .page {
+     /* disposition verticale des sections header, main et footer */
+     display: flex;
+     flex-direction: column;
+     margin: auto;
+     max-width: 1000px;
+     min-width: 500px;
+     height: 100vh;
+     /* 100% de la hauteur du viewport pour assurer la réactivité verticale */
+     gap: var(--gap);
+     padding: var(--gap);
+     background-color: rgb(153, 173, 72);
+
+     .favicon {
+         height: 32px;
+         width: 32px;
+     }
+
+     .header,
+     .footer {
+         font-size: 1.5em;
+         font-weight: bolder;
+         display: flex;
+         gap: 8px;
+         align-items: center;
+
+
+         .menu {
+             /* disposition horizontale des items de menu */
+             display: flex;
+             gap: 12px;
+             flex-wrap: wrap;
+             justify-content: left;
+         }
+
+         .menuItem {
+             flex-grow: 1;
+             /* taille adaptative */
+             font-size: 0.60em;
+             font-weight: bold;
+             text-decoration: none;
+             color: rgb(153, 173, 72);
+             border: none
+         }
+
+         .selectedMenuItem {
+             color: rgb(247, 193, 31);
+         }
+     }
+
+     .main {
+         flex: 1;
+         /* permettre de le formatage flex du parent */
+         min-height: 10vh;
+         /* hauteur minimum relative à la hauteur du viewport*/
+
+         /* contrecarrer les styles de la classe page */
+         border: none;
+         padding: 0px;
+         background-color: rgba(153, 173, 72);
+
+         /* Alignement horizontal des éléments enfants */
+         display: flex;
+         flex-direction: row;
+         gap: var(--gap);
+
+         .scrollSection {
+             overflow-y: auto;
+         }
+
+         .content {
+             flex-grow: 1;
+
+             .bigImage {
+                 background-position: center;
+                 background-repeat: no-repeat;
+                 background-size: cover;
+                 aspect-ratio: 16/9;
+                 margin-bottom:  var(--gap);
+             }
+         }
+
+         .justifiedText {
+             text-align: justify;
+             margin-top: var(--gap);
+         }
+
+         .left_Aside {
+             flex: 1;
+             min-width: 100px;
+             max-width: 120px;
+         }
+
+         .right_Aside {
+             flex: 1;
+             min-width: 70px;
+             max-width: 120px;
+         }
+
+     }
+
+     .main>* {
+         background: white;
+         padding: var(--gap);
+         border: 1px solid gray;
+     }
+ }
+
+ .page>* {
+     /* cibler tout les enfants enfant de l'éléments de classe page */
+     background: lightgray;
+     padding: var(--gap);
+     border: 1px solid gray;
+ }
+
+
+ /* disposer une liste d'icone font-awsome vertivalement */
+ .iconList {
+     display: flex;
+     flex-direction: column;
+     text-align: center;
+     gap: var(--gap);
+ }
+
+ /* style pour formater les icones de classe font-awsome */
+ .fa-icon {
+     flex: 1;
+     font-size: 2em;
+     color: dodgerblue;
+     cursor: pointer;
+ }
+
+ /* Changer la couleur de l'élément survolé de classe fa-icon */
+ .fa-icon:hover {
+     color: blue;
+ }
+
+
+ /*** classes pour l'apparence de la barre de défilement ***/
+ ::-webkit-scrollbar {
+     border-radius: var(--border-radius);
+     width: var(--scroolbar-with);
+ }
+
+ ::-webkit-scrollbar-track {
+     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+     border-radius: var(--border-radius);
+ }
+
+ ::-webkit-scrollbar-thumb {
+     border-radius: var(--border-radius);
+     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+ }
+
+ .momo-trust-display-regular {
+     font-family: "Momo Trust Display", sans-serif;
+     font-weight: 400;
+     font-style: normal;
+     font-size: 1.8em;
+ }
+
+ .author {
+     width: 30%;
+     min-width: 300px;
+     margin: auto;
+     margin-top: 50px;
+     font-size: 1.5em;
+
+     ul {
+         list-style-type: none;
+     }
+ }
